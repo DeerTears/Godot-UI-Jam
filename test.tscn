@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmujq2aly5k6y"]
+
+[ext_resource type="Script" path="res://screens/save_slots_screen.gd" id="1_6oxan"]
+
+[node name="SaveLoadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6oxan")
+
+[node name="H" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = 43.0
+offset_right = -45.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="V1" type="VBoxContainer" parent="H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Button" parent="H/V1"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Slot 1"
+
+[node name="Delete" type="Button" parent="H/V1"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Delete"
+
+[node name="V2" type="VBoxContainer" parent="H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Button" parent="H/V2"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Slot 1"
+
+[node name="Delete" type="Button" parent="H/V2"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Delete"
+
+[node name="V3" type="VBoxContainer" parent="H"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Slot" type="Button" parent="H/V3"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Slot 1"
+
+[node name="Delete" type="Button" parent="H/V3"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Delete"
