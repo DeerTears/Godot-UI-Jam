@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://51gll6sde7ao"]
+[gd_scene load_steps=4 format=3 uid="uid://51gll6sde7ao"]
 
 [ext_resource type="Script" path="res://screens/save_slots_screen.gd" id="1_gn6dx"]
+[ext_resource type="Script" path="res://screens/save_slot/save_slot_button.gd" id="2_p3vpn"]
+[ext_resource type="Script" path="res://screens/save_slot/popup_confirm.gd" id="3_2l12q"]
 
 [node name="SaveLoadScreen" type="Control"]
 custom_minimum_size = Vector2(55, 55)
@@ -8,14 +10,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 17.0
-offset_right = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_gn6dx")
 
-[node name="H" type="HBoxContainer" parent="."]
+[node name="Slots" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,45 +26,127 @@ offset_right = -45.0
 offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 
-[node name="V1" type="VBoxContainer" parent="H"]
+[node name="V1" type="VBoxContainer" parent="Slots"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
-[node name="Slot" type="Button" parent="H/V1"]
+[node name="Save" type="Button" parent="Slots/V1"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Slot 1"
+script = ExtResource("2_p3vpn")
 
-[node name="Delete" type="Button" parent="H/V1"]
+[node name="Delete" type="Button" parent="Slots/V1"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Delete"
+script = ExtResource("2_p3vpn")
+function = 2
 
-[node name="V2" type="VBoxContainer" parent="H"]
+[node name="V2" type="VBoxContainer" parent="Slots"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
-[node name="Slot" type="Button" parent="H/V2"]
+[node name="Save" type="Button" parent="Slots/V2"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Slot 1"
+script = ExtResource("2_p3vpn")
+slot = 2
 
-[node name="Delete" type="Button" parent="H/V2"]
+[node name="Delete" type="Button" parent="Slots/V2"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Delete"
+script = ExtResource("2_p3vpn")
+slot = 2
+function = 2
 
-[node name="V3" type="VBoxContainer" parent="H"]
+[node name="V3" type="VBoxContainer" parent="Slots"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
-[node name="Slot" type="Button" parent="H/V3"]
+[node name="Save" type="Button" parent="Slots/V3"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Slot 1"
+script = ExtResource("2_p3vpn")
+slot = 3
 
-[node name="Delete" type="Button" parent="H/V3"]
+[node name="Delete" type="Button" parent="Slots/V3"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Delete"
+script = ExtResource("2_p3vpn")
+slot = 3
+function = 2
+
+[node name="PopupDelete" type="Popup" parent="."]
+title = "???"
+initial_position = 1
+size = Vector2i(600, 300)
+visible = true
+script = ExtResource("3_2l12q")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupDelete"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Control" parent="PopupDelete/MarginContainer"]
+layout_mode = 2
+
+[node name="Notice" type="Label" parent="PopupDelete/MarginContainer/Panel"]
+layout_mode = 1
+offset_right = 70.0
+offset_bottom = 23.0
+text = "Warning!"
+
+[node name="Text" type="Label" parent="PopupDelete/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -11.5
+offset_right = 149.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "File in slot %s will be deleted. Proceed?"
+
+[node name="OK" type="Button" parent="PopupDelete/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 31.0
+grow_vertical = 0
+text = "OK"
+
+[node name="Cancel" type="Button" parent="PopupDelete/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Cancel"
