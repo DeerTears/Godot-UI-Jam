@@ -1,3 +1,4 @@
+## Updates the visual state of buttons, not the data.
 extends Node
 
 enum SCREEN_TYPES
@@ -17,17 +18,8 @@ enum BUTTON_TYPES
 func modify_state(button_type: BUTTON_TYPES, data: Dictionary) -> void:
 	match button_type:
 		BUTTON_TYPES.SAVE_SLOT:
-			save_data(data)
+			pass
 		BUTTON_TYPES.LOAD_SLOT:
-			load_data(data)
+			pass
 		BUTTON_TYPES.DELETE_SLOT:
-			delete_data(data)
-
-func save_data(data: Dictionary) -> void:
-	pass
-
-func load_data(data: Dictionary) -> void:
-	pass
-
-func delete_data(data: Dictionary) -> void:
-	pass
+			pass
